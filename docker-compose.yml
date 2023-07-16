@@ -1,0 +1,18 @@
+version: '3'
+services:
+  myapp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    volumes:
+      - ./src:/app/src
+    networks:
+      - database_monitoring_network
+    env_file:
+      - .env
+
+networks:
+  database_monitoring_network:
+    driver: bridge
